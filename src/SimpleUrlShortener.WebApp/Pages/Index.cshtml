@@ -1,0 +1,45 @@
+﻿@page "{Path?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <div class="col-6 m-auto mt-5">
+        
+        <form method="post">
+
+            <div asp-validation-summary="All" class="alert-danger"></div>
+            <div class="mb-2">
+                <div class="row">
+                    <div class="col-9 mx-0">
+                        <input asp-for="Destination"
+                               type="text"
+                               placeholder="Enter your loooooooooong URL"
+                               class="form-control"/>
+                    </div>
+                    <div class="col-3 my-auto align-self-stretch">
+                        <button type="submit" class="btn btn-primary">Make It Short!</button>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.ShortUrl is not null)
+            {
+                <div class="form-text">
+                    Copy your short URL <a href="@Model.ShortUrl">@Model.ShortUrl</a>
+                    <span class=""></span>
+                </div>
+            }
+
+        </form>
+
+            @if (Model.ErrorMessage is not null)
+            {
+                <div class="alert alert-danger">
+                    @Model.ErrorMessage
+                </div>
+            }
+        
+    </div>
+</div>
